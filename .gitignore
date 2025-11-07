@@ -1,0 +1,55 @@
+# Recommended .gitignore for a CodeIgniter 4 project
+# Keep files needed for the app, ignore local/dev artifacts and sensitive data
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local environment / secret files
+.env
+env
+.user.ini
+
+# Composer vendor directory (install with `composer install`)
+/vendor/
+composer.phar
+
+# Node modules and logs (if using Node tooling)
+/node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build/dist output
+/build/
+/dist/
+
+# CodeIgniter writable folder - ignore runtime files but keep a .gitkeep if present
+/writable/*
+!/writable/.gitkeep
+
+# Public uploads - usually user uploaded files should not be in the repo
+/public/uploads/
+
+# Logs, cache, and debugbar (these are inside writable/ but added explicitly for clarity)
+writable/cache/
+writable/logs/
+writable/debugbar/
+writable/session/
+
+# PHPUnit cache file
+.phpunit.result.cache
+
+# IDE/editor folders
+/.idea/
+/.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Misc
+*.log
+coverage/
+/.sass-cache/
+
+# Windows thumbnail cache
+ehthumbs.db
+
