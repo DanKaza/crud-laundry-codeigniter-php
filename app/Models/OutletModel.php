@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class OutletModel extends Model
 {
-    protected $table           = 'tb_outlet';
-    protected $primaryKey      = 'id_outlet ';
-    protected $allowedFields   = [
+    protected $table = 'tb_outlet';
+    protected $primaryKey = 'id_outlet';
+    protected $allowedFields = [
         "nama_outlet",
         "alamat_outlet",
         "no_tlp",
@@ -17,6 +17,22 @@ class OutletModel extends Model
     public function saveOutlet($data)
     {
         $query = $this->db->table('tb_outlet')->insert($data);
+        return $query;
+    }
+    public function getOutlet()
+    {
+        $builder = $this->db->table('tb_outlet');
+        return $builder->get();
+    }
+
+    public function updateOutlet($data, $id)
+    {
+        $query = $this->db->table('tb_outlet')->update($data, where: array('id_outlet' => $id));
+        return $query;
+    }
+    public function deleteOutlet($id)
+    {
+        $query = $this->db->table('tb_outlet')->delete(array('id_outlet' => $id));
         return $query;
     }
 }

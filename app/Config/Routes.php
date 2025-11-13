@@ -36,7 +36,11 @@ $routes->get('/admin/outlet', 'Admin\Outlet::index');
 $routes->get('/admin/pengguna', 'Admin\Pengguna::index');
 $routes->get('/admin/paket', 'Admin\Paket::index');
 $routes->get('/admin/transaksi', 'Admin\Transaksi::index');
-$routes->post('/admin/outlet', 'Admin\Outlet::index');
+$routes->post('/admin/outlet/save', 'Admin\Outlet::save');
+$routes->post('/admin/outlet/update', 'Admin\Outlet::update');
+$routes->post('/admin/outlet/delete', 'Admin\Outlet::delete');
+$routes->post('/admin/pengguna/save', 'Admin\Pengguna::save');
+$routes->post('/admin/pengguna/update', 'Admin\Pengguna::update');
 
 /*
  * --------------------------------------------------------------------

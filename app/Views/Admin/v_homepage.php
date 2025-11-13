@@ -7,7 +7,8 @@
     <title><?= $title; ?></title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url('assets/adminlte') ?>/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -15,9 +16,11 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/adminlte') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/adminlte') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/adminlte') ?>/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/adminlte') ?>/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -59,7 +62,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="https://www.instagram.com/ansdyi/" class="brand-link">
-                <img src="<?php echo base_url('assets/adminlte') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?php echo base_url('assets/adminlte') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">My Laundry <?= session()->get('id_outlet') ?></span>
             </a>
 
@@ -68,10 +72,12 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo base_url('assets/adminlte') ?>/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo base_url('assets/adminlte') ?>/dist/img/avatar3.png"
+                            class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="https://www.instagram.com/ansdyi/" class="d-block"><?= session()->get('nama_pengguna') ?></a>
+                        <a href="https://www.instagram.com/ansdyi/"
+                            class="d-block"><?= session()->get('nama_pengguna') ?></a>
                     </div>
                 </div>
                 <div class="user-panel mt-3 mb-4 d-flex">
@@ -83,7 +89,8 @@
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -94,7 +101,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
                         <li class="nav-header">Dashboard</li>
@@ -189,7 +197,8 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>
-            <strong>Copyright © 2023 Anisa Damayanti for 12th Grade of Software Engineering [Ujikom P3 Website]. </strong> All rights reserved.
+            <strong>Copyright © 2023 Anisa Damayanti for 12th Grade of Software Engineering [Ujikom P3 Website].
+            </strong> All rights reserved.
 
         </footer>
 
@@ -230,7 +239,8 @@
         });
     </script>
     <!-- bs-custom-file-input -->
-    <script src="<?php echo base_url('assets/adminlte') ?>/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script
+        src="<?php echo base_url('assets/adminlte') ?>/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <script>
         $(function() {
             bsCustomFileInput.init();
@@ -239,7 +249,8 @@
     <!-- InputMask -->
     <script src="<?php echo base_url('assets/adminlte') ?>/plugins/moment/moment.min.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="<?php echo base_url('assets/adminlte') ?>/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script
+        src="<?php echo base_url('assets/adminlte') ?>/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script>
         $(function() {
             $('#tglTransaksi').datetimepicker({
@@ -259,6 +270,56 @@
             });
         })
     </script>
+    <script>
+        $(document).ready(function() {
+            // get edit outlet
+            $('.btn-edit-outlet').on('click', function() {
+                // get data from button edit
+                const id = $(this).data('id');
+                const nama = $(this).data('nama');
+                const alamat = $(this).data('alamat');
+                const no = $(this).data('tlp');
+
+
+                // Set data to Form Edit
+                $('.id_outlet').val(id);
+                $('.nama_outlet').val(nama);
+                $('.alamat_outlet').val(alamat);
+                $('.no_tlp').val(no).trigger('change');
+
+
+                // Call Modal Edit
+                $('#updateData').modal('show');
+            });
+            // get delete outlet
+            $('.btn-delete-outlet').on('click', function() {
+                const id = $(this).data('id');
+                $('.id_outlet').val(id);
+                $('#deleteData').modal('show');
+            });
+
+            // get edit pengguna
+            $('.btn-edit-pengguna').on('click', function() {
+                // get data from button edit
+                const id = $(this).data('id');
+                const nama = $(this).data('nama');
+                const username = $(this).data('username');
+                const outlet = $(this).data('outlet');
+                const role = $(this).data('role');
+
+                // Set data to Form Edit
+                $('.id_user').val(id);
+                $('.nama_pengguna').val(nama);
+                $('.username').val(username);
+                $('.id_outlet').val(outlet);
+                $('.role').val(role).trigger('change');
+
+                // Call Modal Edit
+                $('#updateData').modal('show');
+            });
+        });
+    </script>
+
 </body>
 
 </html>

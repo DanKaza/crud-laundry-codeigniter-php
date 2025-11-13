@@ -3,9 +3,21 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\OutletModel;
+use App\Models\PenggunaModel;
 
 class Pengguna extends BaseController
 {
+    // jangan lupa proteksi variabel model
+    protected $outlet;
+    protected $pengguna;
+    function __construct()
+        {
+             $this->outlet = new OutletModel();
+            $this->pengguna = new PenggunaModel();
+        }
+
+    
     public function index()
     {
         $data = [
@@ -17,8 +29,53 @@ class Pengguna extends BaseController
             'deletetitle' => "Delete Data Pengguna",
         ];
 
+         $data['outlet'] = $this->outlet->getOutlet()->getResult();
+
+         $data['pengguna'] = $this->pengguna->getPengguna()->getResult();
+
+         $data['penggunacount'] = $this->pengguna->countAllResults();
+
+
         $data['page'] = view('admin/v_pengguna', $data);
 
         echo view("admin/v_homepage", $data);
     }
+
+    public function save()
+    {
+        $data = array(
+            'nama_pengguna' => $this->request->getPost('nama_pengguna'),
+            'username' => $this->request->getVar('username'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'id_outlet' => $this->request->getPost('id_outlet'),
+            'role' => $this->request->getPost('role'),
+
+        );
+        $this->pengguna->savePengguna($data);
+        session()->setFlashdata('title', 'Great!');
+        return redirect()->back()
+        ->with('text','New Data Pengguna was Saved!');
+
+     
+    }
+
+    public function update()
+    {
+        $id = $this->request->getPost('id_user');
+        $data = array(
+            'nama_pengguna' => $this->request->getPost('nama_pengguna'),
+            'username' => $this->request->getVar('username'),
+            'id_outlet' => $this->request->getPost('id_outlet'),
+            'role' => $this->request->getPost('role'),
+
+        );
+
+        $this->pengguna->updatePengguna($data, $id);
+        session()->setFlashdata('title', 'Updated!');
+        return redirect()->back()
+        ->with('text','Data Pengguna was Updated!');
+
+
+    }
+
 }

@@ -49,28 +49,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Anisa</td>
-                            <td>admin</td>
-                            <td>My Laundry</td>
-                            <td>Admin</td>
-                            <td class="text-center">
-                                <button class="btn-warning btn-edit-pengguna" data-id="" data-nama="" data-username="" data-outlet="" data-role="">
-                                    <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
-                                </button>
+                        <?php
+                        $i = 1;
+                        foreach ($pengguna as $item) :
+                        ?>
+                            <tr>
+                                <td><?= $i ?></td>
+                                <td><?= $item->nama_pengguna; ?></td>
+                                <td><?= $item->username; ?></td>
+                                <td><?= $item->nama_outlet; ?></td>
+                                <td><?= $item->role; ?></td>
 
-                                <button class="btn-danger btn-delete-pengguna" data-id="">
-                                    <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
-                                </button>
-                            </td>
-                        </tr>
+                                <td class="text-center">
+                                    <button class="btn-warning btn-edit-pengguna"
+                                     data-id="<?= $item->id_user ?>" 
+                                     data-nama="<?= $item->nama_pengguna; ?>" 
+                                     data-username="<?= $item->username; ?>"
+                                     data-outlet="<?= $item->id_outlet; ?>"
+                                     data-role="<?= $item->role;  ?></button>">
+                                        <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
+                                    </button>
+
+                                    <button class="btn-danger btn-delete-pengguna" data-id="">
+                                        <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php
+                            $i++;
+                        endforeach;
+                        ?>
 
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
+                <?= $penggunacount; ?>
                 Total Data
             </div>
             <!-- /.card-footer-->
@@ -78,7 +93,7 @@
         <!-- /.card -->
 
         <!-- Modal Create Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pengguna/save') ?>" method="post">
             <div class="modal fade" id="inputData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -114,6 +129,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="namaOutlet" name="id_outlet" required>
                                             <option value="">- Pilih Nama Outlet -</option>
+                                            <?php foreach ($outlet as $item) : ?>
+                                                <option value="<?= $item->id_outlet ?>"><?= $item->nama_outlet ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -144,7 +162,7 @@
         <!-- /.modal -->
 
         <!-- Modal Update Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pengguna/update') ?>" method="post">
             <div class="modal fade" id="updateData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -174,6 +192,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control id_outlet" id="namaOutlet" name="id_outlet" required>
                                             <option value="">- Pilih Nama Outlet -</option>
+                                              <?php foreach ($outlet as $item) : ?>
+                                                <option value="<?= $item->id_outlet ?>"><?= $item->nama_outlet ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
