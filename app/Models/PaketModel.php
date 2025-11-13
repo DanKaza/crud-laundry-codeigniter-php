@@ -14,4 +14,36 @@ class PaketModel extends Model
         "nama_paket",
         "harga"
     ];
+
+    public function savePaket($data)
+    {
+        $query = $this->db->table('tb_paket')->insert($data);
+        return $query;
+}
+    public function getOutlet()
+    {
+        $builder = $this->db->table('tb_paket');
+        $builder->select('*');
+        $builder->join('tb_outlet', 'tb_outlet.id_outlet = tb_paket.id_outlet', 'left');
+        return $builder->get();
+    }
+    public function getPaket()
+    {
+        $builder = $this->db->table('tb_paket');
+        return $builder->get();
+    }
+
+    public function updatePaket($data, $id)
+    {
+        $query = $this->db->table('tb_paket')->update($data, array('id_paket' => $id));
+        return $query;
+    }
+
+    public function deletePaket($id)
+    {
+        $query = $this->db->table('tb_paket')->delete(array('id_paket' => $id));
+        return $query;
+
+
+    }
 }

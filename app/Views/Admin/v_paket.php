@@ -49,27 +49,43 @@
                         </tr>
                     </thead>
                     <tbody>
+                         <tbody>
+                        <?php
+                        $i = 1;
+                        foreach ($paket as $item) :
+                        ?>
                             <tr>
-                                <td>1</td>
-                                <td>My Laundry 1</td>
-                                <td>Kiloan</td>
-                                <td>Baju Kaos 1kg</td>
-                                <td>30000</td>
+                                <td><?= $i ?></td>
+                                <td><?= $item->nama_outlet; ?></td>
+                                <td><?= $item->jenis_paket; ?></td>
+                                <td><?= $item->nama_paket; ?></td>
+                                <td><?= $item->harga; ?></td>
+                        </td>
                                 <td class="text-center">
-                                    <button class="btn-warning btn-edit-paket" data-id="" data-outlet="" data-jenis="" data-nama="" data-harga="">
+                                    <button class="btn-warning btn-edit-paket"
+                                     data-id="<?= $item->id_paket ?>" 
+                                     data-nama="<?= $item->id_outlet; ?>" 
+                                     data-username="<?= $item->jenis_paket; ?>"
+                                     data-outlet="<?= $item->nama_paket; ?>"
+                                     data-role="<?= $item->harga;  ?>">
                                         <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
                                     </button>
-
-                                    <button class="btn-danger btn-delete-paket" data-id="">
+                                    <button class="btn-danger btn-delete-paket" 
+                                    data-id="<?= $item->id_paket ?>">
                                         <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>
+                            <?php 
+                            $i++;
+                            endforeach;
+                             ?>
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
+                <?=  $paketcount; ?>
                 Total Data
             </div>
             <!-- /.card-footer-->
@@ -77,7 +93,7 @@
         <!-- /.card -->
 
         <!-- Modal Create Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/paket/save') ?>" method="post">
             <div class="modal fade" id="inputData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -95,6 +111,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="namaOutlet" name="id_outlet" required>
                                             <option value="">- Pilih Nama Outlet -</option>
+                                              <?php foreach ($outlet as $item) : ?>
+                                                <option value="<?= $item->id_outlet ?>"><?= $item->nama_outlet ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -140,7 +159,7 @@
         <!-- /.modal -->
 
         <!-- Modal Update Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/paket/update') ?>" method="post">
             <div class="modal fade" id="updateData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -158,6 +177,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control id_outlet" id="namaOutlet" name="id_outlet" required>
                                             <option value="">- Pilih Nama Outlet -</option>
+                                             <?php foreach ($outlet as $item) : ?>
+                                                <option value="<?= $item->id_outlet ?>"><?= $item->nama_outlet ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -204,7 +226,7 @@
         <!-- /.modal -->
 
         <!-- Modal Delete Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/paket/delete')  ?>" method="post">
             <div class="modal fade" id="deleteData">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">

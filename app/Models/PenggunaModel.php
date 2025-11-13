@@ -36,4 +36,11 @@ class PenggunaModel extends Model
 
     }
 
+    public function deletePengguna($id)
+    {
+        $query = $this->db->table('tb_user')->delete(array('id_user' => $id));
+        return $query;
+
+    }
+
 }

@@ -70,7 +70,8 @@
                                         <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
                                     </button>
 
-                                    <button class="btn-danger btn-delete-pengguna" data-id="">
+                                    <button class="btn-danger btn-delete-pengguna" 
+                                    data-id="<?= $item->id_user ?>">
                                         <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -226,7 +227,7 @@
         <!-- /.modal -->
 
         <!-- Modal Delete Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pengguna/delete') ?>" method="post">
             <div class="modal fade" id="deleteData">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">

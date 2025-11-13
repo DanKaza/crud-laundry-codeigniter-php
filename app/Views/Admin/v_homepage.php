@@ -317,6 +317,49 @@
                 // Call Modal Edit
                 $('#updateData').modal('show');
             });
+
+
+            // get delete pengguna
+            $('.btn-delete-pengguna').on('click', function() {
+                //get data from button delete
+                const id = $(this).data('id');
+                //set data to Form Delete
+                $('.id_user').val(id);
+                // Call Modal Delete
+                $('#deleteData').modal('show');
+            });
+
+            // get edit paket
+            $('.btn-edit-paket').on('click', function() {
+                // get data from button edit
+                const id = $(this).data('id');
+                const outlet = $(this).data('outlet');
+                const jenis = $(this).data('jenis');
+                const nama = $(this).data('nama');
+                const harga = $(this).data('harga');
+
+                // Set data to Form Edit
+                $('.id_paket').val(id);
+                $('.id_outlet').val(outlet);
+                $('.jenis_paket').val(jenis);
+                $('.nama_paket').val(nama);
+                $('.harga').val(harga).trigger('change');
+
+                // Call Modal Edit
+                $('#updateData').modal('show');
+            });
+
+            // get delete paket
+            $('.btn-delete-paket').on('click', function() {
+                //get data from button delete
+                const id = $(this).data('id');
+                //set data to Form Delete
+                $('.id_paket').val(id);
+                // Call Modal Delete
+                $('#deleteData').modal('show');
+            });
+
+
         });
     </script>
 

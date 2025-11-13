@@ -36,11 +36,27 @@ $routes->get('/admin/outlet', 'Admin\Outlet::index');
 $routes->get('/admin/pengguna', 'Admin\Pengguna::index');
 $routes->get('/admin/paket', 'Admin\Paket::index');
 $routes->get('/admin/transaksi', 'Admin\Transaksi::index');
+
+// Routes buat CRUD Outlet
 $routes->post('/admin/outlet/save', 'Admin\Outlet::save');
 $routes->post('/admin/outlet/update', 'Admin\Outlet::update');
 $routes->post('/admin/outlet/delete', 'Admin\Outlet::delete');
+
+// Routes buat CRUD Pengguna
 $routes->post('/admin/pengguna/save', 'Admin\Pengguna::save');
 $routes->post('/admin/pengguna/update', 'Admin\Pengguna::update');
+$routes->post('/admin/pengguna/delete', 'Admin\Pengguna::delete');
+
+// Routes buat CRUD Paket
+$routes->post('/admin/paket/save', 'Admin\Paket::save');
+$routes->post('/admin/paket/update', 'Admin\Paket::update');
+$routes->post('/admin/paket/delete', 'Admin\Paket::delete');
+
+// Routes buat CRUD Member
+$routes->post('/admin/member/save', 'Admin\Member::save');
+$routes->post('/admin/member/update', 'Admin\Member::update');
+$routes->post('/admin/member/delete', 'Admin\Member::delete');
+
 
 /*
  * --------------------------------------------------------------------

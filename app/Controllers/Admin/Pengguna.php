@@ -78,4 +78,14 @@ class Pengguna extends BaseController
 
     }
 
+    public function delete()
+    {
+        $id = $this->request->getPost('id_user');
+
+        $this->pengguna->deletePengguna($id);
+        session()->setFlashdata('title', 'Great!');
+        return redirect()->back()
+        ->with('text','Data Pengguna was Deleted!');
+    }
+
 }
