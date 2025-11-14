@@ -30,12 +30,17 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/auth', 'Auth::index');
+$routes->post('/auth', 'Auth::index');
+
+//routes akses buat admin,kasir, dan owner
 $routes->get('/admin/dashboard', 'Admin\Dashboard::index');
 $routes->get('/admin/outlet', 'Admin\Outlet::index');
 $routes->get('/admin/pengguna', 'Admin\Pengguna::index');
 $routes->get('/admin/paket', 'Admin\Paket::index');
 $routes->get('/admin/transaksi', 'Admin\Transaksi::index');
+$routes->get('/admin/pelanggan', 'Admin\Pelanggan::index');
 
 // Routes buat CRUD Outlet
 $routes->post('/admin/outlet/save', 'Admin\Outlet::save');
@@ -52,11 +57,10 @@ $routes->post('/admin/paket/save', 'Admin\Paket::save');
 $routes->post('/admin/paket/update', 'Admin\Paket::update');
 $routes->post('/admin/paket/delete', 'Admin\Paket::delete');
 
-// Routes buat CRUD Member
-$routes->post('/admin/member/save', 'Admin\Member::save');
-$routes->post('/admin/member/update', 'Admin\Member::update');
-$routes->post('/admin/member/delete', 'Admin\Member::delete');
-
+// Routes buat CRUD Pelanggan
+$routes->post('/admin/pelanggan/save', 'Admin\Pelanggan::save');
+$routes->post('/admin/pelanggan/update', 'Admin\Pelanggan::update');
+$routes->post('/admin/pelanggan/delete', 'Admin\Pelanggan::delete');
 
 /*
  * --------------------------------------------------------------------

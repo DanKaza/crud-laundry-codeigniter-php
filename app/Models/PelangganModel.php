@@ -14,4 +14,30 @@ class PelangganModel extends Model
         "jenis_kelamin",
         "no_tlp"
     ];
+
+
+    public  function savePelanggan($data)
+    {
+        $query = $this->db->table('tb_member')->insert($data);
+        return $query;
+    }
+
+    public function getPelanggan()
+    {
+        $builder = $this->db->table('tb_member');
+        return $builder->get();
+
+    }
+
+    public function updatePelanggan($data, $id)
+    {
+        $query = $this->db->table('tb_member')->update($data, array('id_member' => $id));
+        return $query;
+    }
+
+    public function deletePelangggan($id)
+    {
+        $query = $this->db->table('tb_member')->delete(array('id_member' => $id));
+        return $query;
+    }
 }

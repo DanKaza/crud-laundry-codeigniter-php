@@ -30,10 +30,15 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
+                <?php if (isset($validation)) : ?>
+                    <div class="alert alert-danger">
+                        <?= $validation->listErrors() ?>
+                    </div>
+                    <?php endif; ?>
 
-                <form action="" method="post">
+                <form action="<?php echo base_url('/auth') ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username" value="">
+                        <input type="text" class="form-control" placeholder="Username" name="username" value="<?= set_value('username') ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

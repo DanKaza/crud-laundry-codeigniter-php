@@ -360,6 +360,39 @@
             });
 
 
+
+
+
+            //get Edit/Update Pelanggan
+            $('.btn-edit-pelanggan').on('click', function() {
+                // get data from button edit
+                const id = $(this).data('id');
+                const nama = $(this).data('nama');
+                const alamat = $(this).data('alamat');
+                const jenis = $(this).data('jenis');
+                const tlp = $(this).data('tlp');
+                //set data to Form Edit
+                $('.id_member').val(id);
+                $('.nama_pelanggan').val(nama);
+                $('.alamat_pelanggan').val(alamat);
+                $('.jenis_kelamin').val(jenis);
+                $('.no_tlp').val(tlp).trigger('change');
+                // Call Modal Edit
+                $('#updateData').modal('show');
+
+            });
+
+            //get Delete Pelanggan
+            $('.btn-delete-pelanggan').on('click', function() {
+                //get data from button delete
+                const id = $(this).data('id');
+                //set data to Form Delete
+                $('.id_member').val(id);
+                // Call Modal Delete
+                $('#deleteData').modal('show');
+            });
+
+
         });
     </script>
 

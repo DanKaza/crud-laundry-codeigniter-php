@@ -66,7 +66,7 @@
                                      data-nama="<?= $item->nama_pengguna; ?>" 
                                      data-username="<?= $item->username; ?>"
                                      data-outlet="<?= $item->id_outlet; ?>"
-                                     data-role="<?= $item->role;  ?></button>">
+                                     data-role="<?= $item->role;  ?>">
                                         <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
                                     </button>
 

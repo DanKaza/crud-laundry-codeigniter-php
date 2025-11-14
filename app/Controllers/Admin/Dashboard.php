@@ -15,6 +15,6 @@ class Dashboard extends BaseController
 
         $data['page'] = view('Admin/v_dashboard', $data);
 
-        echo view("Admin/v_homepage", $data);
+        return view("Admin/v_homepage", $data);
     }
 }

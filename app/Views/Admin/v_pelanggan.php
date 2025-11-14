@@ -49,27 +49,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Hyunjin</td>
-                            <td>Karawang</td>
-                            <td>Laki-laki</td>
-                            <td>081356780091</td>
-                            <td class="text-center">
-                                <button class="btn-warning btn-edit-pelanggan" data-id="" data-nama="" data-alamat="" data-jenis="" data-tlp="">
+                       <?php
+                        $i = 1;
+                        foreach ($pelanggan as $item) :
+                        ?>
+                            <tr>
+                                <td><?= $i ?></td>
+                                <td><?= $item->nama_pelanggan; ?></td>
+                                <td><?= $item->alamat_pelanggan; ?></td>
+                                <td><?= $item->jenis_kelamin; ?></td>
+                                <td><?= $item->no_tlp; ?></td>
+                                <td class="text-center">
+                                <button class="btn-warning btn-edit-pelanggan"
+                                     data-id="<?= $item->id_member; ?>" 
+                                     data-nama="<?= $item->nama_pelanggan; ?>" 
+                                     data-username="<?= $item->alamat_pelanggan; ?>"
+                                     data-outlet="<?= $item->jenis_kelamin; ?>"
+                                     data-role="<?= $item->no_tlp;  ?></button>">
                                     <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
                                 </button>
 
-                                <button class="btn-danger btn-delete-pelanggan" data-id="">
+                                <button class="btn-danger btn-delete-pelanggan"
+                                 data-id="<?= $item->id_member; ?>">
                                     <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </td>
                         </tr>
+                        <?php
+                            $i++;
+                            endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
+                <?= $pelanggancount ?>
                 Total Data
             </div>
             <!-- /.card-footer-->
@@ -77,7 +91,7 @@
         <!-- /.card -->
 
         <!-- Modal Create Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pelanggan/save') ?>" method="post">
             <div class="modal fade" id="inputData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -134,7 +148,7 @@
         <!-- /.modal -->
 
         <!-- Modal Update Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pelanggan/update')?>" method="post">
             <div class="modal fade" id="updateData">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -192,7 +206,7 @@
         <!-- /.modal -->
 
         <!-- Modal Delete Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/pelanggan/delete') ?>" method="post">
             <div class="modal fade" id="deleteData">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
