@@ -76,7 +76,8 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <?= $outletcount; ?>Total Data
+                <?= $outletcount; ?>
+                Total Data
             </div>
             <!-- /.card-footer-->
         </div>
