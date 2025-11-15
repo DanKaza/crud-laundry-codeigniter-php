@@ -14,6 +14,15 @@ class Pelanggan extends BaseController
     {
         $this->pelanggan = new PelangganModel();
 
+        
+        if(session()->get('role') != 'Admin'){
+            echo '<script>
+            alert("Access Denied");
+            </script>';
+            exit;
+          
+        }
+
     }
     public function index()
     {

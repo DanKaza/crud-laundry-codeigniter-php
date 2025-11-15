@@ -15,6 +15,15 @@ class Pengguna extends BaseController
         {
              $this->outlet = new OutletModel();
             $this->pengguna = new PenggunaModel();
+
+            
+        if(session()->get('role') != 'Admin'){
+            echo '<script>
+            alert("Access Denied");
+            </script>';
+            exit;
+          
+        }
         }
 
     

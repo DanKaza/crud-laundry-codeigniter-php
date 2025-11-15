@@ -13,8 +13,17 @@ class Paket extends BaseController
 
     function __construct()
     {
-        $this->paket = new PaketModel();
+        $this->paket = new PaketModel();   
         $this->outlet = new OutletModel();
+
+        
+        if(session()->get('role') != 'Admin'){
+            echo '<script>
+            alert("Access Denied");
+            </script>';
+            exit;
+        
+        }
     }
     public function index()
     {
