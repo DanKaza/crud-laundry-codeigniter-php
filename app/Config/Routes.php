@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/auth', 'Auth::index');
+$routes->get('/auth/logout','Auth::logout');
 $routes->post('/auth', 'Auth::index');
 
 //routes akses buat admin,kasir, dan owner
