@@ -286,8 +286,6 @@
                 $('.nama_outlet').val(nama);
                 $('.alamat_outlet').val(alamat);
                 $('.no_tlp').val(no).trigger('change');
-
-
                 // Call Modal Edit
                 $('#updateData').modal('show');
             });
@@ -297,7 +295,6 @@
                 $('.id_outlet').val(id);
                 $('#deleteData').modal('show');
             });
-
             // get edit pengguna
             $('.btn-edit-pengguna').on('click', function() {
                 // get data from button edit
@@ -317,8 +314,6 @@
                 // Call Modal Edit
                 $('#updateData').modal('show');
             });
-
-
             // get delete pengguna
             $('.btn-delete-pengguna').on('click', function() {
                 //get data from button delete
@@ -328,7 +323,6 @@
                 // Call Modal Delete
                 $('#deleteData').modal('show');
             });
-
             // get edit paket
             $('.btn-edit-paket').on('click', function() {
                 // get data from button edit
@@ -348,7 +342,6 @@
                 // Call Modal Edit
                 $('#updateData').modal('show');
             });
-
             // get delete paket
             $('.btn-delete-paket').on('click', function() {
                 //get data from button delete
@@ -358,11 +351,6 @@
                 // Call Modal Delete
                 $('#deleteData').modal('show');
             });
-
-
-
-
-
             //get Edit/Update Pelanggan
             $('.btn-edit-pelanggan').on('click', function() {
                 // get data from button edit
@@ -381,7 +369,6 @@
                 $('#updateData').modal('show');
 
             });
-
             //get Delete Pelanggan
             $('.btn-delete-pelanggan').on('click', function() {
                 //get data from button delete
@@ -392,10 +379,50 @@
                 $('#deleteData').modal('show');
             });
 
-
+            //get Edit/Update Transaksi
+            $('.btn-update-transaksi').on('click', function() {
+                // get data from button edit
+                const id = $(this).data('id');
+                const inv = $(this).data('inv');
+                const id_member = $(this).data('id_member');
+                const tglbayar = $(this).data('tglbayar');
+                const stattransaksi = $(this).data('stattransaksi');
+                const statbayar = $(this).data('statbayar');
+                //set data to Form Edit
+                $('.id_transaksi').val(id);
+                $('.kode_invoice').val(inv);
+                $('.id_member').val(id_member);
+                $('.tgl_bayar').val(tglbayar);
+                $('.status_transaksi').val(stattransaksi);
+                $('.status_bayar').val(statbayar).trigger('change');
+                // Call Modal Edit
+                $('#updateData').modal('show');
+            });
+            //get Delete Transaksi
+            $('.btn-delete-transaksi').on('click', function() {
+                //get data from button delete
+                const id = $(this).data('id');
+                //set data to Form Delete
+                $('.id_transaksi').val(id);
+                // Call Modal Delete
+                $('#deleteData').modal('show');
+            });
         });
     </script>
 
-</body>
 
+<script>
+   $(document).ready(function() {
+    $.ajax({
+        url: "<?= base_url('admin/transaksi/autocode') ?>",
+        type: "GET",
+        success: function(print) {
+           
+            var code = $.parseJSON(print);
+            $('#kdInvoice').val(code);
+        }
+    });       
+    });
+</script>
+</body>
 </html>

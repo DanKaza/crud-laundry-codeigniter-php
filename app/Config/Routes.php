@@ -62,6 +62,15 @@ $routes->post('/admin/pelanggan/save', 'Admin\Pelanggan::save');
 $routes->post('/admin/pelanggan/update', 'Admin\Pelanggan::update');
 $routes->post('/admin/pelanggan/delete', 'Admin\Pelanggan::delete');
 
+// Routes buat CRUD Transaksi
+$routes->post('/admin/transaksi/save', 'Admin\Transaksi::save');
+$routes->post('/admin/transaksi/update', 'Admin\Transaksi::update');
+$routes->post('/admin/transaksi/delete', 'Admin\Transaksi::delete');
+$routes->get('admin/transaksi/autocode', 'Admin\Transaksi::autocode');
+
+// Routes buat Laporan
+$routes->get('/admin/laporan', 'Admin\Laporan::index');
+$routes->get('/admin/laporan/generatePdf', 'Admin\Laporan::generatePdf');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

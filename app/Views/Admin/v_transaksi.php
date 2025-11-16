@@ -54,32 +54,44 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach ($transaksi as $item) : ?>
                         <tr>
                             <td class="text-center">
-                                <button class="btn-warning btn-update-transaksi" data-id="" data-inv="" data-id_member="" data-tglbayar="" data-stattransaksi="" data-statbayar="">
+                                <button class="btn-warning btn-update-transaksi" 
+                                data-id="<?= $item->id_transaksi ?>" 
+                                data-inv="<?= $item->kode_invoice ?>" 
+                                data-id_member="<?= $item->id_member ?>" 
+                                data-tglbayar="<?= $item->tgl_bayar ?>" 
+                                data-stattransaksi="<?= $item->status_transaksi ?>" 
+                                data-statbayar="<?= $item->status_bayar ?>">
                                     <i class="nav-icon fas fa-pen" aria-hidden="true"></i>
                                 </button>
 
-                                <button class="btn-danger btn-delete-transaksi" data-id="">
+                                <button class="btn-danger btn-delete-transaksi" 
+                                data-id="<?= $item->id_transaksi ?>">
                                     <i class="nav-icon fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </td>
-                            <td>INV1408230001</td>
-                            <td>2023-08-14 21:52:00</td>
-                            <td>2023-08-15 21:52:00</td>
-                            <td>Hyunjin</td>
-                            <td>Kiloan</td>
-                            <td>Kaos</td>
-                            <td>3</td>
-                            <td>1000</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td><?=  $item->kode_invoice; ?></td>
+                            <td><?=  $item->tgl_transaksi; ?></td>
+                            <td><?=  $item->batas_waktu ?></td>
+                            <td><?=  $item->nama_pelanggan; ?></td>
+                            <td><?=  $item->nama_paket; ?></td>
+                            <td><?=  $item->keterangan; ?></td>
+                            <td><?=  $item->qty; ?></td>
+                            <td><?=  $item->biaya_tambahan; ?></td>
+                            <td><?=  $item->diskon; ?></td>
+                            <td><?=  $item->pajak; ?></td>                     
                         </tr>
+                        <?php
+                         endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
+                <?= $transaksicount ?>
                 Total Data
             </div>
             <!-- /.card-footer-->
@@ -111,19 +123,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $i = 1;
+                        foreach ($transaksi as $item) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>INV1408230001</td>
-                            <td>Hyunjin</td>
-                            <td>2023-08-15 07:52:00</td>
-                            <td>Selesai</td>
-                            <td>Dibayar</td>
+                            <td><?=  $i ?></td>
+                            <td><?=  $item->kode_invoice; ?></td>
+                            <td><?=  $item->nama_pelanggan; ?></td>
+                            <td><?=  $item->tgl_bayar; ?></td>
+                            <td><?=  $item->status_transaksi; ?></td>
+                            <td><?=  $item->status_bayar; ?></td>
                         </tr>
+                        <?php 
+                          $i++;
+                         endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
+                <?= $transaksicount; ?>
                 Total Data
             </div>
             <!-- /.card-footer-->
@@ -131,7 +150,7 @@
         <!-- /.card -->
 
         <!-- Modal Create Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/transaksi/save') ?>" method="post">
             <div class="modal fade" id="inputData" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -179,6 +198,11 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="namaPelanggan" name="id_member" required>
                                             <option value="">- Pilih Nama Pelanggan -</option>
+
+                                            <?php foreach ($pelanggan as $item) : ?>
+                                                <option value="<?= $item->id_member; ?>"><?= $item->nama_pelanggan; ?></option>
+                                            <?php endforeach; ?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -187,6 +211,10 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="namaPaket" name="id_paket" required>
                                             <option value="">- Pilih Nama Paket -</option>
+                                               <?php foreach ($paket as $item) : ?>
+                                                <option value="<?= $item->id_paket; ?>"><?= $item->nama_paket; ?></option>
+                                            <?php endforeach; ?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -245,7 +273,7 @@
         <!-- /.modal -->
 
         <!-- Modal Update Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/transaksi/update') ?>" method="post">
             <div class="modal fade" id="updateData" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -315,7 +343,7 @@
         <!-- /.modal -->
 
         <!-- Modal Delete Data -->
-        <form class="form-horizontal" action="" method="post">
+        <form class="form-horizontal" action="<?php echo base_url('admin/transaksi/delete') ?>" method="post">
             <div class="modal fade" id="deleteData">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
